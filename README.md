@@ -556,18 +556,18 @@ ZDTinyLayout.updateConstraints {
 
 ### Unmatched behavior
 
-If no matching installed constraint is found, the default behavior is to create a new one (`.makeNew`):
+If no matching installed constraint is found, the default behavior is to trigger a precondition failure (`.fail`):
 
 ```swift
-ZDTinyLayout.updateConstraints(unmatched: .makeNew) {
+ZDTinyLayout.updateConstraints {
     view.widthAnchor == other.widthAnchor + 24
 }
 ```
 
-You can switch to strict mode to fail instead:
+You can switch to lenient mode to create a new constraint instead:
 
 ```swift
-ZDTinyLayout.updateConstraints(unmatched: .fail) {
+ZDTinyLayout.updateConstraints(unmatched: .makeNew) {
     view.widthAnchor == other.widthAnchor + 24
 }
 ```

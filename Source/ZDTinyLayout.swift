@@ -816,7 +816,7 @@ public enum ConstraintUpdateUnmatchedBehavior {
 /// Updates matching installed constraints created by ZDTinyLayout expressions inside the closure.
 ///
 /// Matching ignores constant and priority, so both can be updated in-place.
-/// By default, unmatched constraints are created and activated.
+/// By default, unmatched constraints trigger a precondition failure.
 ///
 /// - Parameter unmatched: Behavior to use when no installed constraint matches.
 /// - Parameter closure: A closure that runs ZDTinyLayout expressions to update.
