@@ -822,7 +822,7 @@ public enum ConstraintUpdateUnmatchedBehavior {
 /// - Parameter closure: A closure that runs ZDTinyLayout expressions to update.
 @MainActor
 public func updateConstraints(
-	unmatched: ConstraintUpdateUnmatchedBehavior = .makeNew,
+    unmatched: ConstraintUpdateUnmatchedBehavior = .fail,
 	_ closure: () -> Void
 ) {
 	updateConstraintBehaviors.append(unmatched)
