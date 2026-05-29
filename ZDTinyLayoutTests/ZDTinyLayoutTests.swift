@@ -35,6 +35,7 @@ let cgEpsilon: CGFloat = 0.00001
 let fEpsilon: Float = 0.00001
 let dEpsilon: Double = 0.00001
 
+@MainActor
 class ZDTinyLayoutTests: XCTestCase {
 
     let view1 = TestView()
@@ -1276,8 +1277,8 @@ extension ZDTinyLayoutTests {
         XCTAssertTrue(original.isActive)
     }
 
-    func testUpdateConstraints_DefaultBehaviorCreatesWhenNoMatch() {
-        ZDTinyLayout.updateConstraints {
+    func testUpdateConstraints_MakeNewBehaviorCreatesWhenNoMatch() {
+        ZDTinyLayout.updateConstraints(unmatched: .makeNew) {
             view1.heightAnchor == view2.heightAnchor + 33
         }
 
@@ -1297,10 +1298,10 @@ extension ZDTinyLayoutTests {
         XCTAssertTrue(constraint.isActive)
     }
 
-    func testUpdateConstraints_StrictBehaviorStillUpdatesWhenMatched() {
+    func testUpdateConstraints_DefaultFailBehaviorStillUpdatesWhenMatched() {
         let original = (view1.leadingAnchor == view2.leadingAnchor + 5)
 
-        ZDTinyLayout.updateConstraints(unmatched: .fail) {
+        ZDTinyLayout.updateConstraints {
             view1.leadingAnchor == view2.leadingAnchor + 12
         }
 
